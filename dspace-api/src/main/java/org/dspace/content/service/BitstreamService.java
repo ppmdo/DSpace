@@ -163,7 +163,18 @@ public interface BitstreamService extends DSpaceObjectService<Bitstream>, DSpace
      * @throws SQLException if database error
      */
     public List<Bitstream> findDeletedBitstreams(Context context) throws SQLException;
-
+    
+    /**
+     * Delete a bitstream.
+     *
+     * @param context       context
+     * @param bitstream     DSpace Bitstream
+     * @throws IOException        if IO error
+     * @throws SQLException       if database error
+     * @throws AuthorizeException if authorization error
+     */
+    public void delete(Context context, Bitstream bitstream)
+        throws SQLException, AuthorizeException, IOException;
 
     /**
      * Remove a bitstream that has been set to "deleted" from the database

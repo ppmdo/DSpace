@@ -28,6 +28,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import org.dspace.app.rest.exception.RepositoryMethodNotImplementedException;
+
 /**
  * This is the repository responsible to manage Bitstream Rest object
  *
@@ -89,6 +91,21 @@ public class BitstreamRestRepository extends DSpaceRestRepository<BitstreamRest,
         return new BitstreamResource(bs, utils, rels);
     }
 
+    @Override
+    protected void delete(Context context, UUID id) throws RepositoryMethodNotImplementedException {
+        Bitstream bit = null;
+        try {
+            bit = bs.find(context, id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+        try {
+            bs.delete(context, bit);
+        } catch (SQLException | AuthorizeException | IOException e) {
+            // log.error(e.getMessage(), e);
+        }
+    }
+    
     public InputStream retrieve(UUID uuid) {
         Context context = obtainContext();
         Bitstream bit = null;
@@ -109,4 +126,5 @@ public class BitstreamRestRepository extends DSpaceRestRepository<BitstreamRest,
         context.abort();
         return is;
     }
+
 }
