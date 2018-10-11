@@ -8,29 +8,34 @@
 
 package org.dspace.app.rest.model;
 
+import org.dspace.app.rest.RestResourceController;
+
 /**
  * The Checksum Result REST Resource.
  *
- * @author Pablo Prieto (pablo.prieto at 4science.it)
+ * @author Pablo Prieto (pablo.prieto at almat.com.mx)
  */
-public class ChecksumResultRest {
-    String checkSumAlgorithm;
-    String value;
+public class ChecksumResultRest  extends BaseObjectRest<String> {
+    public static final String PLURAL_NAME = "checksumresults";
+    public static final String NAME = "checksumresult";
+    public static final String CATEGORY = RestAddressableModel.CORE;
 
-    public String getCheckSumAlgorithm() {
-        return checkSumAlgorithm;
+    String resultCode;
+    String resultDescription;
+
+    @Override
+    public String getCategory() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void setCheckSumAlgorithm(String checkSumAlgorithm) {
-        this.checkSumAlgorithm = checkSumAlgorithm;
+    @Override
+    public Class getController() {
+        return RestResourceController.class;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
+    @Override
+    public String getType() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

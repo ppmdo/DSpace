@@ -26,4 +26,6 @@ public interface ChecksumResultService {
     public ChecksumResult findByCode(Context context, ChecksumResultCode code) throws SQLException;
 
     public List<ChecksumResult> findAll(Context context) throws SQLException;
+    
+    int countTotal(Context context) throws SQLException;
 }

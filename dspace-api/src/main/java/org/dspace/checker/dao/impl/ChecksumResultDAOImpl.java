@@ -31,6 +31,7 @@ public class ChecksumResultDAOImpl extends AbstractHibernateDAO<ChecksumResult> 
     protected ChecksumResultDAOImpl() {
         super();
     }
+    // WRITE THE FINDALL
 
     @Override
     public ChecksumResult findByCode(Context context, ChecksumResultCode code) throws SQLException {
@@ -41,4 +42,9 @@ public class ChecksumResultDAOImpl extends AbstractHibernateDAO<ChecksumResult> 
         criteriaQuery.where(criteriaBuilder.equal(checksumResultRoot.get(ChecksumResult_.resultCode), code));
         return uniqueResult(context, criteriaQuery, false, ChecksumResult.class, -1, -1);
     }
+
+    public int countTotal(Context context) throws SQLException {
+        return count(createQuery(context, "SELECT count(*) from Checksum"));
+    }
+
 }

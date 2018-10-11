@@ -26,4 +26,5 @@ public interface ChecksumResultDAO extends GenericDAO<ChecksumResult> {
 
     public ChecksumResult findByCode(Context context, ChecksumResultCode code) throws SQLException;
 
+    public int countTotal(Context context) throws SQLException;
 }
