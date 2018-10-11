@@ -68,7 +68,8 @@ public class ChecksumRepository extends DSpaceRestRepository<ChecksumResultRest,
         int total = 0;
         try {
             total = crs.countTotal(context);
-            it = crs.findAll(context, pageable.getPageSize(), pageable.getOffset());
+            // TODO Allow offsets as in:
+            it = crs.findAll(context, 0, 11);
             while (it.hasNext()) {
                 crs.add(it.next());
             }

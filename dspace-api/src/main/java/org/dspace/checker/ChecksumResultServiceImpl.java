@@ -8,8 +8,8 @@
 package org.dspace.checker;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 import org.dspace.checker.dao.ChecksumResultDAO;
 import org.dspace.checker.service.ChecksumResultService;
@@ -55,6 +55,11 @@ public class ChecksumResultServiceImpl implements ChecksumResultService {
     @Override
     public List<ChecksumResult> findAll(Context context) throws SQLException {
         return checksumResultDAO.findAll(context, ChecksumResult.class);
+    }
+    
+    @Override
+    public Iterator<ChecksumResult> findAll(Context context, int limit, int offset) throws SQLException {
+        return checksumResultDAO.findAll(context, limit, offset);
     }
     
     @Override

@@ -8,6 +8,7 @@
 package org.dspace.checker.service;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.dspace.checker.ChecksumResult;
@@ -26,6 +27,8 @@ public interface ChecksumResultService {
     public ChecksumResult findByCode(Context context, ChecksumResultCode code) throws SQLException;
 
     public List<ChecksumResult> findAll(Context context) throws SQLException;
+    
+    public Iterator<ChecksumResult> findAll(Context context, int limit, int offset) throws SQLException;
     
     int countTotal(Context context) throws SQLException;
 }
