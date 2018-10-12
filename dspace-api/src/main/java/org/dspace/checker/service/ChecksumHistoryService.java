@@ -9,8 +9,10 @@ package org.dspace.checker.service;
 
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
 
+import org.dspace.checker.ChecksumHistory;
 import org.dspace.checker.ChecksumResultCode;
 import org.dspace.checker.MostRecentChecksum;
 import org.dspace.content.Bitstream;
@@ -43,4 +45,8 @@ public interface ChecksumHistoryService {
      * @throws SQLException if database error
      */
     public int prune(Context context, Map<ChecksumResultCode, Long> interests) throws SQLException;
+
+    public Iterator<ChecksumHistory> findAll(Context context, int limit, int offset) throws SQLException;
+
+    int countTotal(Context context) throws SQLException;
 }

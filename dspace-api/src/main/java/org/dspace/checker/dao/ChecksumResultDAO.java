@@ -8,6 +8,7 @@
 package org.dspace.checker.dao;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 
 import org.dspace.checker.ChecksumResult;
 import org.dspace.checker.ChecksumResultCode;
@@ -24,7 +25,9 @@ import org.dspace.core.GenericDAO;
  */
 public interface ChecksumResultDAO extends GenericDAO<ChecksumResult> {
 
+    public Iterator<ChecksumResult> findAll(Context context, int limit, int offset) throws SQLException;
+    
     public ChecksumResult findByCode(Context context, ChecksumResultCode code) throws SQLException;
 
-    public int countTotal(Context context) throws SQLException;
+    int countRows(Context context) throws SQLException;
 }

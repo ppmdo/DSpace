@@ -9,6 +9,7 @@ package org.dspace.checker;
 
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import org.dspace.checker.service.ChecksumHistoryService;
 import org.dspace.checker.service.ChecksumResultService;
 import org.dspace.checker.service.MostRecentChecksumService;
 import org.dspace.content.Bitstream;
+import org.dspace.core.AbstractHibernateDAO;
 import org.dspace.core.Context;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -118,4 +120,13 @@ public class ChecksumHistoryServiceImpl implements ChecksumHistoryService {
 
     }
 
+    @Override
+    public Iterator<ChecksumHistory> findAll(Context context, int limit, int offset) throws SQLException {
+        return checksumHistoryDAO.findAll(context, limit, offset);
+    }
+
+    @Override
+    public int countTotal(Context context) throws SQLException {
+      return checksumHistoryDAO.countRows(context);  
+    };
 }

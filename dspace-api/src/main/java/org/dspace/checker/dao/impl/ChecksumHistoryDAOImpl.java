@@ -9,6 +9,9 @@ package org.dspace.checker.dao.impl;
 
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
@@ -56,6 +59,17 @@ public class ChecksumHistoryDAOImpl extends AbstractHibernateDAO<ChecksumHistory
         Query query = createQuery(context, hql);
         query.setParameter("bitstream", bitstream);
         query.executeUpdate();
+    }
+
+    @Override
+    public int countRows(Context context) throws SQLException {
+        return count(createQuery(context, "SELECT count(*) from ChecksumHistory"));
+    }
+
+    @Override
+    public Iterator<ChecksumHistory> findAll(Context context, int limit, int offset) throws SQLException {
+        Map<String, Object> map = new HashMap<>();
+        return findByX(context, ChecksumHistory.class, map, true, limit, offset).iterator();
     }
 
 }

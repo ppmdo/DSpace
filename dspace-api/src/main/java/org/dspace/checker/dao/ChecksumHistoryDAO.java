@@ -9,8 +9,10 @@ package org.dspace.checker.dao;
 
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Iterator;
 
 import org.dspace.checker.ChecksumHistory;
+import org.dspace.checker.ChecksumResult;
 import org.dspace.checker.ChecksumResultCode;
 import org.dspace.content.Bitstream;
 import org.dspace.core.Context;
@@ -47,4 +49,8 @@ public interface ChecksumHistoryDAO extends GenericDAO<ChecksumHistory> {
      * @throws SQLException if database error
      */
     public void deleteByBitstream(Context context, Bitstream bitstream) throws SQLException;
+    
+    int countRows(Context context) throws SQLException;
+    
+    public Iterator<ChecksumHistory> findAll(Context context, int limit, int offset) throws SQLException;
 }

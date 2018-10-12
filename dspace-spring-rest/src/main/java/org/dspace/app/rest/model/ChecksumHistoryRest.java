@@ -1,0 +1,38 @@
+/**
+ * The contents of this file are subject to the license and copyright
+ * detailed in the LICENSE and NOTICE files at the root of the source
+ * tree and available online at
+ *
+ * http://www.dspace.org/license/
+ */
+
+package org.dspace.app.rest.model;
+
+import org.dspace.app.rest.RestResourceController;
+
+/**
+ * The Checksum Result REST Resource.
+ *
+ * @author Pablo Prieto (pablo.prieto at almat.com.mx)
+ */
+public class ChecksumHistoryRest  extends BaseObjectRest<String> {
+    public static final String PLURAL_NAME = "checksumhistory";
+    public static final String NAME = "checksumhistory";
+    public static final String CATEGORY = RestAddressableModel.CORE;
+
+    @Override
+    public String getCategory() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Class getController() {
+        return RestResourceController.class;
+    }
+
+    @Override
+    public String getType() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+}

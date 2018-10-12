@@ -8,6 +8,9 @@
 package org.dspace.checker.dao.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -31,7 +34,6 @@ public class ChecksumResultDAOImpl extends AbstractHibernateDAO<ChecksumResult> 
     protected ChecksumResultDAOImpl() {
         super();
     }
-    // WRITE THE FINDALL
 
     @Override
     public ChecksumResult findByCode(Context context, ChecksumResultCode code) throws SQLException {
@@ -42,9 +44,14 @@ public class ChecksumResultDAOImpl extends AbstractHibernateDAO<ChecksumResult> 
         criteriaQuery.where(criteriaBuilder.equal(checksumResultRoot.get(ChecksumResult_.resultCode), code));
         return uniqueResult(context, criteriaQuery, false, ChecksumResult.class, -1, -1);
     }
-
-    public int countTotal(Context context) throws SQLException {
-        return count(createQuery(context, "SELECT count(*) from Checksum"));
+    
+    public int countRows(Context context) throws SQLException {
+        return count(createQuery(context, "SELECT count(*) from ChecksumResult"));
     }
 
+    @Override
+    public Iterator<ChecksumResult> findAll(Context context, int limit, int offset) throws SQLException {
+        Map<String, Object> map = new HashMap<>();
+        return findByX(context, ChecksumResult.class, map, true, limit, offset).iterator();
+    }
 }

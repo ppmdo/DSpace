@@ -64,6 +64,6 @@ public class ChecksumResultServiceImpl implements ChecksumResultService {
     
     @Override
     public int countTotal(Context context) throws SQLException {
-        return checksumResultDAO.countTotal(context);
+        return checksumResultDAO.countRows(context);
     }
 }
