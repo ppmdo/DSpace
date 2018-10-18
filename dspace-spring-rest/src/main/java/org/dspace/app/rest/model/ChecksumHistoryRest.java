@@ -16,7 +16,6 @@ import org.dspace.app.rest.RestResourceController;
  * @author Pablo Prieto (pablo.prieto at almat.com.mx)
  */
 public class ChecksumHistoryRest  extends BaseObjectRest<String> {
-    public static final String PLURAL_NAME = "checksumhistory";
     public static final String NAME = "checksumhistory";
     public static final String CATEGORY = RestAddressableModel.CORE;
 

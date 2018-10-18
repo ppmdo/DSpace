@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component(ChecksumHistoryRest.CATEGORY + "." + ChecksumHistoryRest.NAME)
-public class ChecksumRepository extends DSpaceRestRepository<ChecksumHistoryRest, String> {
+public class ChecksumHistoryRestRepository extends DSpaceRestRepository<ChecksumHistoryRest, String> {
 
     @Autowired
     ChecksumHistoryService crs;
@@ -39,7 +39,7 @@ public class ChecksumRepository extends DSpaceRestRepository<ChecksumHistoryRest
     @Autowired
     ChecksumHistoryConverter converter;
 
-    public ChecksumRepository() {
+    public ChecksumHistoryRestRepository() {
         System.out.println("Checksum repository initialized by Spring");
     }
 

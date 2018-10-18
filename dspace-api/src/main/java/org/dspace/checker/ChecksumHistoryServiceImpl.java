@@ -18,7 +18,6 @@ import org.dspace.checker.service.ChecksumHistoryService;
 import org.dspace.checker.service.ChecksumResultService;
 import org.dspace.checker.service.MostRecentChecksumService;
 import org.dspace.content.Bitstream;
-import org.dspace.core.AbstractHibernateDAO;
 import org.dspace.core.Context;
 import org.springframework.beans.factory.annotation.Autowired;
 
